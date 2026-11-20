@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DONTSTOP</string>
+    <string name="accessibility_service_description">Observes foreground-app changes and briefly checks visible labels or view IDs to identify Reels and Shorts. It counts activity only in apps you select. Processing stays on this device; screen content is never saved.</string>
+    <string name="overlay_description">Open today’s DONTSTOP usage</string>
+</resources>

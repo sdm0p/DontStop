@@ -1,0 +1,15 @@
+node_modules/
+.gradle-local/
+.codex-remote-attachments/
+metro-debug.log
+dontstop_*.png
+android/.gradle/
+android/.kotlin/
+android/build/
+android/app/build/
+android/keystore.properties
+android/app/*.jks
+android/local.properties
+
+android/app/.cxx/
+android/app/.externalNativeBuild/

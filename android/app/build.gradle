@@ -1,0 +1,56 @@
+apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "com.facebook.react"
+
+def releaseKeystoreProperties = new Properties()
+def releaseKeystoreFile = rootProject.file("keystore.properties")
+if (releaseKeystoreFile.exists()) {
+    releaseKeystoreProperties.load(new FileInputStream(releaseKeystoreFile))
+}
+
+react { autolinkLibrariesWithApp() }
+
+android {
+    namespace "com.dontstop"
+    compileSdk rootProject.ext.compileSdkVersion
+    ndkVersion rootProject.ext.ndkVersion
+
+    defaultConfig {
+        applicationId "com.dontstop"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "0.1.0"
+    }
+
+    signingConfigs {
+        if (releaseKeystoreFile.exists()) {
+            release {
+                storeFile file(releaseKeystoreProperties["storeFile"])
+                storePassword releaseKeystoreProperties["storePassword"]
+                keyAlias releaseKeystoreProperties["keyAlias"]
+                keyPassword releaseKeystoreProperties["keyPassword"]
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            if (releaseKeystoreFile.exists()) signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            if (releaseKeystoreFile.exists()) signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    implementation("com.facebook.react:react-android")
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
+    if (hermesEnabled.toBoolean()) implementation("com.facebook.react:hermes-android")
+    else implementation jscFlavor
+}
+

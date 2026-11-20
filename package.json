@@ -1,0 +1,32 @@
+{
+  "name": "dontstop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "start": "react-native start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-native": "^0.82.1",
+    "react-native-safe-area-context": "^5.6.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/runtime": "^7.28.4",
+    "@react-native-community/cli": "20.0.0",
+    "@react-native-community/cli-platform-android": "20.0.0",
+    "@react-native/babel-preset": "0.82.1",
+    "@react-native/metro-config": "0.82.1",
+    "@react-native/typescript-config": "0.82.1",
+    "@types/react": "^19.1.16",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
